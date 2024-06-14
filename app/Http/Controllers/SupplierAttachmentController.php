@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreClientRequest;
-use App\Http\Requests\UpdateClientRequest;
-use App\Models\Client;
+use App\Http\Requests\StoreSupplierAttachmentRequest;
+use App\Http\Requests\UpdateSupplierAttachmentRequest;
+use App\Models\SupplierAttachment;
 
-class ClientController extends Controller
+class SupplierAttachmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Client $client)
+    public function index()
     {
-        return view('clients.index', [
-            'clients' => Client::all(),
-        ]);
+        //
     }
 
     /**
@@ -29,7 +27,7 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClientRequest $request)
+    public function store(StoreSupplierAttachmentRequest $request)
     {
         //
     }
@@ -37,7 +35,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show(SupplierAttachment $supplierAttachment)
     {
         //
     }
@@ -45,17 +43,15 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Client $client)
+    public function edit(SupplierAttachment $supplierAttachment)
     {
-        return view('clients.edit', [
-            'client' => $client,
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(UpdateSupplierAttachmentRequest $request, SupplierAttachment $supplierAttachment)
     {
         //
     }
@@ -63,7 +59,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy(SupplierAttachment $supplierAttachment)
     {
         //
     }

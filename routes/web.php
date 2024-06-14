@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MeanController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 
@@ -19,4 +21,7 @@ Route::middleware([
 
     Route::resource('clients', ClientController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('public-sessions', CategoryController::class);
+    Route::resource('suppliers', SupplierController::class);
+    Route::resource('means', MeanController::class);
 });

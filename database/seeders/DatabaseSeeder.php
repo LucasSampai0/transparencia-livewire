@@ -5,10 +5,15 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Mean;
+use App\Models\MeanAttachment;
 use App\Models\PublicSession;
+use App\Models\SpendingMean;
+use App\Models\SpendingSupplier;
 use App\Models\Supplier;
+use App\Models\SupplierAttachment;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\SpendingSupplierFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,5 +39,17 @@ class DatabaseSeeder extends Seeder
             Mean::factory(3)->create(['client_id' => $client->id]);
             Supplier::factory(3)->create(['client_id' => $client->id]);
         });
+
+        Mean::all()->each(function ($mean) {
+            MeanAttachment::factory(3)->create(['mean_id' => $mean->id]);
+        });
+
+        Supplier::all()->each(function ($supplier) {
+            SupplierAttachment::factory(3)->create(['supplier_id' => $supplier->id]);
+        });
+
+        SpendingMean::factory(10)->create();
+        SpendingSupplier::factory(10)->create();
+
     }
 }

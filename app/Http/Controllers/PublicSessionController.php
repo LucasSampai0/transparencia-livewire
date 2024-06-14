@@ -15,7 +15,7 @@ class PublicSessionController extends Controller
     public function index(Client $client)
     {
         return view('public-sessions.index', [
-            'publicSessions' => $client->publicSessions,
+            'public-sessions' => $client->publicSessions,
         ]);
     }
 
