@@ -5,5 +5,5 @@
         </h2>
     </x-slot>
 
-    <livewire:form-client />
+    <livewire:form-client :client="$client" />
 </x-app-layout>
