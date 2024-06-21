@@ -65,6 +65,16 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->means()->delete();
+
+        $client->publicSessions()->delete();
+
+        $client->suppliers()->delete();
+
+        $client->delete();
+        return redirect()->route('clients.index')->with([
+            'flash.bannerStyle' => 'success',
+            'flash.banner' => 'Cliente deletado com sucesso!'
+        ]);
     }
 }

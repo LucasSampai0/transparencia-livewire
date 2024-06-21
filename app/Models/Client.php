@@ -16,4 +16,19 @@ class Client extends Model
         'address',
         'slug'
     ];
+
+    public function means()
+    {
+        return $this->hasMany(Mean::class);
+    }
+
+    public function publicSessions()
+    {
+        return $this->hasMany(PublicSession::class);
+    }
+
+    public function suppliers()
+    {
+        return $this->hasMany(Supplier::class);
+    }
 }

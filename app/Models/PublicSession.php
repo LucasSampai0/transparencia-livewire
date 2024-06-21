@@ -16,4 +16,5 @@ class PublicSession extends Model
         'client_id',
         'attachment',
     ];
+
 }

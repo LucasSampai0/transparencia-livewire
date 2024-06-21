@@ -4,4 +4,6 @@
             {{ __('Categorias') }}
         </h2>
     </x-slot>
+
+    <livewire:table-category />
 </x-app-layout>
