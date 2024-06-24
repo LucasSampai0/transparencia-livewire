@@ -17,6 +17,6 @@ class TableClient extends Component
 
     public function render()
     {
-        return view('livewire.table-client');
+        return view('livewire.table-clients');
     }
 }

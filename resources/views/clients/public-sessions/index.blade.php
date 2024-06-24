@@ -4,6 +4,6 @@
             {{ $client->name }} - {{ __('Sessões Públicas') }}
         </h2>
     </x-slot>
-    @include('livewire.table-public-sessions', ['client' => $client, 'publicSessions' => $publicSessions])
-
+{{--    @include('livewire.table-public-sessions', ['client' => $client, 'publicSessions' => $publicSessions])--}}
+    <livewire:table-public-session :client="$client" />
 </x-app-layout>

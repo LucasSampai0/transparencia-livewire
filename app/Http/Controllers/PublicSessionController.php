@@ -66,8 +66,12 @@ class PublicSessionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PublicSession $publicSession)
+    public function destroy(Client $client, PublicSession $publicSession)
     {
-        //
+        $publicSession->delete();
+        return redirect()->route('clients.public-sessions.index', $publicSession->client)->with([
+            'flash.bannerStyle' => 'success',
+            'flash.banner' => 'Sessão pública excluído com sucesso.',
+        ]);
     }
 }

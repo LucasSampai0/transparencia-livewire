@@ -15,7 +15,7 @@ class MeanController extends Controller
     public function index(Client $client)
     {
         return view('clients.means.index', [
-            'means' => $client->means,
+            'mean' => $client->means,
             'client' => $client,
         ]);
     }
@@ -68,7 +68,6 @@ class MeanController extends Controller
      */
     public function destroy(Client $client, Mean $mean)
     {
-        //create destroy method
         $mean->delete();
         return redirect()->route('clients.means.index', $mean->client)->with([
             'flash.bannerStyle' => 'success',

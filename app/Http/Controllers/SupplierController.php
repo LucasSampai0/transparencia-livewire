@@ -15,7 +15,11 @@ class SupplierController extends Controller
      */
     public function index(Client $client, Category $category)
     {
-
+        return view('clients.suppliers.index', [
+            'suppliers' => $category->suppliers,
+            'category' => $category,
+            'client' => $client,
+        ]);
     }
 
     /**
