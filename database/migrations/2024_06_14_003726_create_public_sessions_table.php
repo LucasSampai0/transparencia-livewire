@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('description');
             $table->date('date');
             $table->time('time');
-            $table->foreignId('client_id')->constrained();
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->string('attachment');
             $table->timestamps();
         });

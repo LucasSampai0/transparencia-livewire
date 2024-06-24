@@ -14,4 +14,9 @@ class SupplierAttachment extends Model
         'file',
         'supplier_id',
     ];
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

@@ -64,20 +64,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if($category->means()->count() > 0){
-            return redirect()->route('categories.index')->with([
-                'flash.bannerStyle' => 'danger',
-                'flash.banner' => 'Não é possível deletar a categoria, pois existem veículos vinculados a ela!'
-            ]);
-        }
-
-        if($category->suppliers()->count() > 0){
-            return redirect()->route('categories.index')->with([
-                'flash.bannerStyle' => 'danger',
-                'flash.banner' => 'Não é possível deletar a categoria, pois existem fornecedores vinculados a ela!'
-            ]);
-        }
-
         $category->delete();
         return redirect()->route('categories.index')->with([
             'flash.bannerStyle' => 'success',

@@ -15,4 +15,16 @@ class Mean extends Model
         'category_id',
         'client_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    
+
 }

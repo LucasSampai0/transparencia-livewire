@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MeanController;
+use App\Http\Controllers\PublicSessionController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
@@ -20,8 +21,8 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('clients', ClientController::class);
+    Route::resource('clients.means', MeanController::class);
     Route::resource('categories', CategoryController::class);
-    Route::resource('public-sessions', CategoryController::class);
-    Route::resource('suppliers', SupplierController::class);
-    Route::resource('means', MeanController::class);
+    Route::resource('clients.public-sessions', PublicSessionController::class);
+    Route::resource('clients.suppliers', SupplierController::class);
 });

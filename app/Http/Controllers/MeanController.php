@@ -14,8 +14,9 @@ class MeanController extends Controller
      */
     public function index(Client $client)
     {
-        return view('means.index', [
+        return view('clients.means.index', [
             'means' => $client->means,
+            'client' => $client,
         ]);
     }
 
@@ -46,9 +47,12 @@ class MeanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mean $mean)
+    public function edit(Client $client, Mean $mean)
     {
-        //
+        return view('clients.means.edit', [
+            'means' => $mean,
+            'client' => $client,
+        ]);
     }
 
     /**
@@ -62,8 +66,13 @@ class MeanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mean $mean)
+    public function destroy(Client $client, Mean $mean)
     {
-        //
+        //create destroy method
+        $mean->delete();
+        return redirect()->route('clients.means.index', $mean->client)->with([
+            'flash.bannerStyle' => 'success',
+            'flash.banner' => 'Veículo excluído com sucesso.',
+        ]);
     }
 }

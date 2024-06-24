@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('file');
-            $table->foreignId('mean_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('mean_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,4 +17,9 @@ class PublicSession extends Model
         'attachment',
     ];
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
 }

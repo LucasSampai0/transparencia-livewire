@@ -14,4 +14,9 @@ class MeanAttachment extends Model
         'file',
         'mean_id',
     ];
+
+    public function mean()
+    {
+        return $this->belongsTo(Mean::class);
+    }
 }

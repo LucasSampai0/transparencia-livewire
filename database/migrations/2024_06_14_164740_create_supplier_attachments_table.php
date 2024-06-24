@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('file');
-            $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
         });
     }
 

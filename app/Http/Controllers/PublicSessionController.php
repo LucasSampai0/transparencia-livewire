@@ -14,8 +14,9 @@ class PublicSessionController extends Controller
      */
     public function index(Client $client)
     {
-        return view('public-sessions.index', [
-            'public-sessions' => $client->publicSessions,
+        return view('clients.public-sessions.index', [
+            'publicSessions' => $client->publicSessions,
+            'client' => $client,
         ]);
     }
 
@@ -46,9 +47,12 @@ class PublicSessionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PublicSession $publicSession)
+    public function edit(Client $client, PublicSession $publicSession)
     {
-        //
+        return view('clients.public-sessions.edit', [
+            'publicSessions' => $publicSession,
+            'client' => $client,
+        ]);
     }
 
     /**
