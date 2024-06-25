@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
+use Livewire\WithFileUploads;
 
 class ClientController extends Controller
 {
@@ -37,9 +38,9 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show($slug)
     {
-        //
+        $client = Client::where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -57,7 +58,7 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
-        //
+
     }
 
     /**

@@ -65,8 +65,13 @@ class SupplierController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(Client $client, Supplier $supplier)
     {
-        //
+        $supplier->delete();
+
+        return redirect()->route('clients.suppliers.index', $client)->with([
+            'flash.bannerStyle' => 'success',
+            'flash.banner' => 'Fornecedor excluído com sucesso!',
+        ]);
     }
 }

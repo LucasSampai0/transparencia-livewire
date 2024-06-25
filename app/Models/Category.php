@@ -20,4 +20,14 @@ class Category extends Model
     {
         return $this->hasMany(Mean::class);
     }
+
+    public function spendingMean()
+    {
+        return $this->hasMany(SpendingMean::class);
+    }
+
+    public function spendingSupplier()
+    {
+        return $this->hasMany(SpendingSupplier::class);
+    }
 }

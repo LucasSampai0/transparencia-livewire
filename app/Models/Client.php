@@ -17,6 +17,11 @@ class Client extends Model
         'slug'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function means()
     {
         return $this->hasMany(Mean::class);
@@ -30,5 +35,15 @@ class Client extends Model
     public function suppliers()
     {
         return $this->hasMany(Supplier::class);
+    }
+
+    public function spendingsMeans()
+    {
+        return $this->hasMany(SpendingMean::class);
+    }
+
+    public function spendingsSuppliers()
+    {
+        return $this->hasMany(SpendingSupplier::class);
     }
 }

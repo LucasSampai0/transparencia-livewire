@@ -15,8 +15,8 @@ class MeanController extends Controller
     public function index(Client $client)
     {
         return view('clients.means.index', [
-            'mean' => $client->means,
             'client' => $client,
+            'mean' => $client->means,
         ]);
     }
 
