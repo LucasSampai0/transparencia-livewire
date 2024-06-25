@@ -40,8 +40,6 @@ class FormClient extends Component
 
         $logoPath = $this->logo->store('logos', 'public');
 
-        dd($this->client);
-
         $this->client->update([
             'logo' => $logoPath,
             'name' => $this->name,
