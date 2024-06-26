@@ -102,25 +102,41 @@
                                 </svg>
                                 {{ __('Investimentos')}}
                             </x-dropdown-link>
-                            <x-dropdown-link class="inline-flex">
-                                <form action="{{ route('clients.destroy', $client->slug) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="inline-flex">
-                                        <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                             viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
-                                        </svg>
-                                        {{ __('Excluir') }}
-                                    </button>
-                                </form>
+                            <x-dropdown-link class="cursor-pointer inline-flex" x-data x-on:click="$dispatch('open-client-modal', {id:'{{$client->id}}'})">
+                                <svg class="w-[18px] h-[18px] text-grey-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                     viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                </svg>
+                                {{ __('Excluir') }}
                             </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </td>
             </tr>
+            <x-client-modal name="{{$client->id}}" title="Deseja excluir o cliente {{$client->name}}?">
+                <x-slot:body>
+                    <div class="p-3">
+                        <form action="{{ route('clients.destroy', $client->slug) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <x-danger-button type="submit" class="inline-flex">
+                                <svg class="w-[18px] h-[18px] text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                     viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                </svg>
+                                {{ __('Excluir') }}
+                            </x-danger-button>
+                        </form>
+                        <x-secondary-button x-on:click="show = false">
+                            {{ __('Cancelar') }}
+                        </x-secondary-button>
+                    </div>
+                </x-slot:body>
+            </x-client-modal>
         @endforeach
         </tbody>
     </table>
+
 </div>

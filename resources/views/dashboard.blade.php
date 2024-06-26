@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <x-welcome />
             </div>
-            <x-button class="bg-blue-500 text-white mt-4" x-data x-on:click="$dispatch('open-client-modal', {name:'modal3'})">Open Modal3</x-button>
+            <x-button class="bg-blue-500 text-white mt-4" x-data x-on:click="$dispatch('open-client-modal', {name:'modal3'})>Open Modal3</x-button>
         </div>
     </div>
     <x-client-modal name="modal3" title="Titulo3">
