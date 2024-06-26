@@ -35,21 +35,21 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)->create();
 
         Client::all()->each(function ($client) {
-            PublicSession::factory(3)->create(['client_id' => $client->id]);
-            Mean::factory(3)->create(['client_id' => $client->id]);
-            Supplier::factory(3)->create(['client_id' => $client->id]);
+            PublicSession::factory(5)->create(['client_id' => $client->id]);
+            Mean::factory(5)->create(['client_id' => $client->id]);
+            Supplier::factory(5)->create(['client_id' => $client->id]);
         });
 
         Mean::all()->each(function ($mean) {
-            MeanAttachment::factory(3)->create(['mean_id' => $mean->id]);
+            MeanAttachment::factory(5)->create(['mean_id' => $mean->id]);
         });
 
         Supplier::all()->each(function ($supplier) {
-            SupplierAttachment::factory(3)->create(['supplier_id' => $supplier->id]);
+            SupplierAttachment::factory(5)->create(['supplier_id' => $supplier->id]);
         });
 
-        SpendingMean::factory(10)->create();
-        SpendingSupplier::factory(10)->create();
+        SpendingMean::factory(30)->create();
+        SpendingSupplier::factory(30)->create();
 
     }
 }

@@ -51,25 +51,51 @@
                             <x-slot name="content">
                                 <x-dropdown-link href="{{ route('clients.public-sessions.edit', ['client' => $client->slug, 'public_session' => $publicSession->id]) }}" class="inline-flex">
 
-                                    <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/></svg>
+                                    <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                         viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+                                    </svg>
                                     {{ __('Editar') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link class="inline-flex">
-                                    <form action="{{ route('clients.public-sessions.destroy', ['client' => $client->slug, 'public_session' => $publicSession->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="inline-flex">
-                                            <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
-                                            </svg>
-                                            {{ __('Excluir') }}
-                                        </button>
-                                    </form>
+                                <x-dropdown-link x-on:click="$dispatch('open-modal', {id: '{{$publicSession->id}}'})" class="inline-flex">
+                                    <svg class="w-[18px] h-[18px] text-grey-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                         viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                                    </svg>
+                                    {{ __('Excluir') }}
                                 </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </td>
                 </tr>
+                <x-modal :style="'warning'" name="{{$publicSession->id}}" title="Deseja excluir a Sessão Pública {{$publicSession->name}}?">
+                    <x-slot:body>
+                        <div class="p-3">
+                            <p class="text-sm text-gray-700 dark:text-gray-400">
+                                Ao excluir a Sessão Pública de <strong>ID: {{$publicSession->id}}</strong> você estará excluindo todos os dados relacionados a ela. <br>
+                                <strong>Essa ação é irreversível.</strong>
+                            </p>
+                        </div>
+                    </x-slot:body>
+                    <x-slot:footer>
+                        <div class="p-3 flex gap-x-4 justify-evenly">
+                            <div>
+                                <form action="{{ route('clients.public-sessions.destroy', ['client' => $client->slug, 'public_session' => $publicSession->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <x-danger-button type="submit" class="text-red-500 dark:text-red-400">Excluir</x-danger-button>
+                                </form>
+                            </div>
+                            <div>
+                                <x-secondary-button x-on:click="$dispatch('close-modal')" class="text-gray-500 dark:text-gray-400">
+                                    {{__('Cancelar')}}
+                                </x-secondary-button>
+                            </div>
+                        </div>
+                    </x-slot:footer>
+                </x-modal>
             @endforeach
             </tbody>
         </table>
