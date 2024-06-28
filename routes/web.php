@@ -5,6 +5,8 @@ use App\Http\Controllers\MeanController;
 use App\Http\Controllers\PublicSessionController;
 use App\Http\Controllers\SpendingController;
 use App\Http\Controllers\SupplierController;
+use App\Livewire\ClientShow;
+use App\Livewire\ClientTeste;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 
@@ -22,6 +24,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('clients', ClientController::class);
+    Route::get('clientsteste', ClientTeste::class)->name('clients.teste');
     Route::resource('categories', CategoryController::class);
     Route::resource('clients.means', MeanController::class);
     Route::resource('clients.public-sessions', PublicSessionController::class);
@@ -40,3 +43,6 @@ Route::middleware([
     Route::put('clients/{client}/spendings-suppliers/{spendingSupplier}', [SpendingController::class, 'updateSuppliers'])->name('clients.spending-supplier.update');
     Route::delete('clients/{client}/spendings-suppliers/{spendingSupplier}', [SpendingController::class, 'destroySuppliers'])->name('clients.spending-supplier.destroy');
 });
+
+Route::get('{client}', ClientShow::class)->name('clients.public.show');
+Route::get('{client}/veiculos', ClientShow::class)->name('clients.means.public.show');

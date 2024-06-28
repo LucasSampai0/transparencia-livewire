@@ -41,6 +41,9 @@ class ClientController extends Controller
     public function show($slug)
     {
         $client = Client::where('slug', $slug)->firstOrFail();
+        return view('clients.public.show', [
+            'client' => $client,
+        ]);
     }
 
     /**

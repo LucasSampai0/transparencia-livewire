@@ -27,6 +27,18 @@ class SpendingController extends Controller
         ]);
     }
 
+    public function show(Client $client, $month)
+    {
+        // Convert the month number to a date string in the format 'mm/yyyy'
+        $dateString = date('m/Y', mktime(0, 0, 0, $month, 1));
+
+        // Fetch the investment data for the specified client and month
+        $spendingData = $client->spendingsMeans()->where('date', 'like', $dateString . '%')->get();
+
+        // Return the data as a JSON response
+        return response()->json($spendingData);
+    }
+
     public function createMeans()
     {
         return view('clients.spendings.create-means');

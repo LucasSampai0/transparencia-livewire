@@ -72,7 +72,7 @@
                         </x-dropdown>
                     </td>
                 </tr>
-                <x-modal :style="'danger'" name="{{$spendingMean->id}}" title="Deseja excluir o investimento {{$spendingMean->name}}?">
+                <x-modal :style="'warning'" name="{{$spendingMean->id}}" title="Deseja excluir o investimento {{$spendingMean->name}}?">
                     <x-slot:body>
                         <div class="p-3">
                             <p class="text-sm text-gray-700 dark:text-gray-400">
